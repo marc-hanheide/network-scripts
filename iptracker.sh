@@ -31,12 +31,14 @@ params="name=$default_hostname&ip=$default_ip&comment=iface%20$default_iface%20p
 fullurl="$tracker_url?$params"
 
 
+QUIET="-s"
 
 if [ "$VERBOSE" ]; then
 	echo "default_iface: $default_iface"
 	echo "default_ip:    $default_ip"
 	echo "tracker_url:   $tracker_url"
 	echo "fullurl:       $fullurl"
+	QUIET=""
 fi
 
-curl -o /dev/null "$fullurl"
+curl $QUIET -o /dev/null "$fullurl"
