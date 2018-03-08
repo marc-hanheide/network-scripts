@@ -1,16 +1,21 @@
 #!/bin/bash
 
 tracker_url="https://script.google.com/macros/s/AKfycby3hVerD9ysczkdHsgjOYrCalY7R_Kho37iKfhO2LHLy-qb5vqq/exec"
+default_hostname=`hostname`
 
-while getopts "hvu:" opt; do
+while getopts "hvu:n:" opt; do
   case ${opt} in
     h ) 
       echo "Usage:"
-      echo " $0 -h Display this help message."
+      echo " -h      Display this help message."
+      echo " -n name set name (default: $default_hostname)" 
       exit 0
       ;;
     v )
       VERBOSE=1
+      ;;
+    n )
+      default_hostname="$OPTARG"
       ;;
     u )
       tracker_url="$OPTARG"
@@ -29,7 +34,7 @@ else
   default_iface=$(awk '$2 == 00000000 { print $1 }' /proc/net/route)
   default_ip=`ip addr show dev "$default_iface" | grep "inet " | sed 's@ *inet \([0-9\.]*\).*@\1@'`
 fi
-default_hostname=`hostname`
+
 update_date="`date| sed 's/ /%20/g'`"
 
 if which nmap > /dev/null 2>&1; then
