@@ -29,7 +29,7 @@ done
 system="`uname`"
 if [ "$system" = "Darwin" ]; then
   default_iface=`route get default | grep interface| sed 's/ *interface: \(.*\)$/\1/'`
-  default_ip=`ifconfig en1 | grep "inet " | sed 's@^.*inet \([0-9\.]*\).*@\1@'`
+  default_ip=`ifconfig $default_iface | grep "inet " | sed 's@^.*inet \([0-9\.]*\).*@\1@'`
 else
   default_iface=$(awk '$2 == 00000000 { print $1 }' /proc/net/route)
   default_ip=`ip addr show dev "$default_iface" | grep "inet " | sed 's@ *inet \([0-9\.]*\).*@\1@'`
