@@ -59,5 +59,5 @@ if [ -z "$default_ip" ]; then
   sleep 5
   /usr/bin/nmcli d wifi rescan
   #sleep 5
-  #/usr/bin/nmcli c up ifname wlan0
+  #/usr/bin/nmcli c up ifname $default_iface
 fi
