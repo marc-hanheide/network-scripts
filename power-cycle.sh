@@ -58,4 +58,6 @@ if [ -z "$default_ip" ]; then
   /usr/sbin/rfkill unblock "$physical_wifi" 2>&1 | logger
   sleep 5
   /usr/bin/nmcli d wifi rescan
+  #sleep 5
+  #/usr/bin/nmcli c up ifname wlan0
 fi
