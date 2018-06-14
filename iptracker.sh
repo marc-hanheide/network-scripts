@@ -44,7 +44,7 @@ else
 fi
 
 if which dig > /dev/null 2>&1; then
-  public_ip=`dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'`
+  public_ip=`dig TXT +time=1 +tries=1 +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'`
 else
   public_ip="no%20dig"
 fi
