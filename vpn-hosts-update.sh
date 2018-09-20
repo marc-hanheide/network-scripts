@@ -10,6 +10,8 @@ grep -v -F "$identifier" /etc/hosts > "$tmp_hosts"
 
 curl https://lcas.lincoln.ac.uk/vpn/hosts.sh >> "$tmp_hosts"
 
+cat "$tmp_hosts" >&2
+
 cat "$tmp_hosts" > /etc/hosts
 
 rm -f "$tmp_hosts"
