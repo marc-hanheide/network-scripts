@@ -9,6 +9,14 @@ L-CAS runs a VPN server. All currently connected clients can be seen at https://
 1. install openvpn, if you haven't done so yet: `sudo apt-get install openvpn`
 1. run `sudo openvpn HOSTNAME.ovpn` to initiate the connection, you will receive a VPN IP in the `172.31.0.0/22` network, e.g. `172.31.0.42`. This IP is cached and linked to your account. That also means you can only log in _once_ with your `HOSTNAME.ovpn` at any one time, but whereever you login in with that file, you get the same IP.
 
+### Automatically obtain client certificates
+
+You need to a `USER`:`PASSWORD` for this.
+
+```
+CLIENT="$(hostname)"; curl --user USER:PASSWORD "https://lcas.lincoln.ac.uk/vpn/admin.sh?option=add&client=$CLIENT" && curl --user iliad:3894a1812cf2130bf61c7aab8999651f "https://lcas.lincoln.ac.uk/vpn/download.sh?client=$CLIENT" > $CLIENT.ovpn
+```
+
 ## add VPN hosts to `/etc/hosts`
 
 The script [`vpn-hosts-update.sh`](https://raw.githubusercontent.com/marc-hanheide/network-scripts/master/vpn-hosts-update.sh) can be used to add all the VPN hosts to the `/etc/hosts` file (often needed to make ROS networks work). The following line does it automatically for you:
