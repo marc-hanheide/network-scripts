@@ -14,7 +14,7 @@ L-CAS runs a VPN server. All currently connected clients can be seen at https://
 You need to a `USER`:`PASSWORD` for this.
 
 ```
-CLIENT="$(hostname)"; curl --user USER:PASSWORD "https://lcas.lincoln.ac.uk/vpn/admin.sh?option=add&client=$CLIENT" && curl --user iliad:3894a1812cf2130bf61c7aab8999651f "https://lcas.lincoln.ac.uk/vpn/download.sh?client=$CLIENT" > $CLIENT.ovpn
+CLIENT="$(hostname)"; curl --user USER:PASSWORD "https://lcas.lincoln.ac.uk/vpn/admin.sh?option=add&client=$CLIENT" > $CLIENT.ovpn
 ```
 
 ## add VPN hosts to `/etc/hosts`
