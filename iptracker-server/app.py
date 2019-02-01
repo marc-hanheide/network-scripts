@@ -61,6 +61,7 @@ class ping:
         args = {
             'name': web.input(name='unknown').name,
             'ip': web.input(ip='x.x.x.x').ip,
+            'ping_ip': web.ctx.ip,
             'comment': web.input(comment='').comment,
             'ts': datetime.now(),
             'updated': web.input(updated='').updated,

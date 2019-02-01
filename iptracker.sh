@@ -1,6 +1,8 @@
 #!/bin/bash
 
-tracker_url="https://script.google.com/macros/s/AKfycby3hVerD9ysczkdHsgjOYrCalY7R_Kho37iKfhO2LHLy-qb5vqq/exec"
+#tracker_url="https://script.google.com/macros/s/AKfycby3hVerD9ysczkdHsgjOYrCalY7R_Kho37iKfhO2LHLy-qb5vqq/exec"
+tracker_url="https://lcas.lincoln.ac.uk/hosttrack/ping"
+
 default_hostname=`hostname`
 
 while getopts "hvu:n:" opt; do
