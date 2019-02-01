@@ -46,7 +46,7 @@ class ServerList:
             r[k] = {
                 'name': self.servers[k]['name'],
                 'ip': self.servers[k]['ip'],
-                'comment': self.servers[k]['ip'],
+                'comment': self.servers[k]['comment'],
                 'ts': str(self.servers[k]['ts']),
                 'updated': self.servers[k]['updated'],
                 'public_ip': self.servers[k]['public_ip']
