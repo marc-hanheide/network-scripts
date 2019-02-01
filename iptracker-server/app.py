@@ -1,5 +1,6 @@
 import sys
 import os
+from json import dumps
 
 
 abspath = os.path.dirname(__file__)
@@ -14,9 +15,11 @@ import signal
 from datetime import datetime
 
 urls = (
+    '/hosttrack/json', 'json',
     '/hosttrack/', 'index',
     '/hosttrack/ping', 'ping',
     '/', 'index',
+    '/json', 'json',
     '/ping', 'ping'
 )
 
@@ -37,6 +40,19 @@ class ServerList:
         keys = sorted(self.keys())
         return [self.servers[k] for k in keys]
 
+    def json(self):
+        r = {}
+        for k in self.servers:
+            r[k] = {
+                'name': self.servers[k]['name'],
+                'ip': self.servers[k]['ip'],
+                'comment': self.servers[k]['ip'],
+                'ts': str(self.servers[k]['ts']),
+                'updated': self.servers[k]['updated'],
+                'public_ip': self.servers[k]['public_ip']
+            }
+        return dumps(r)
+
     def get(self):
         for k in self.servers:
             self.servers[k]['age'] = datetime.now() - self.servers[k]['ts']
@@ -53,6 +69,12 @@ class index:
         #     if type(v) is str:
         #         session.env[k] = v
         return renderer.index(servers.get())
+
+class json:
+    def GET(self):
+        web.header('Content-Type', 'application/json')
+        return servers.json()
+
 
 class ping:
 
