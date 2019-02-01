@@ -47,7 +47,7 @@ $def with (servers)
 				      <td><a target="_blank" href="http://$s['ip']">$s['ip']</a></td>
 				      <td><a target="_blank" href="http://$s['public_ip']">$s['public_ip']</a></td>
 				      <td>$s['comment']</td>
-				      <td style="color: rgb($min(int(s['age'].total_seconds() * 255/30), 255),$max(255-int(s['age'].total_seconds() * 255/30), 0),0)">$s['ts'] (age: $s['age'])</td>
+				      <td style="color: rgb($min(int(s['age'].total_seconds() * 255/300), 255),$max(255-int(s['age'].total_seconds() * 255/300), 0),0)">$s['ts'] (age: $s['age'])</td>
 				    </tr>
 			  </tbody>
 			</table>
